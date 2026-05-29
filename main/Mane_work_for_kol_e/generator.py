@@ -61,15 +61,15 @@ def generate_data(start_date, end_date, transactions_range, categories, tags, am
 
 def main():
     parser = argparse.ArgumentParser(description="Генератор тестових даних")
-    parser.add_argument("--start_date", required=True, help="Початкова дата (РРРР-ММ-ДД)")
-    parser.add_argument("--end_date", required=True, help="Кінцева дата (РРРР-ММ-ДД)")
-    parser.add_argument("--number_of_transactions", default="1-3",
+    parser.add_argument("start_date", required=True, help="Початкова дата (РРРР-ММ-ДД)")
+    parser.add_argument("end_date", required=True, help="Кінцева дата (РРРР-ММ-ДД)")
+    parser.add_argument("number_of_transactions", default="1-3",
                         help="Кількість транзакцій на день (формат: М-N, наприклад 0-3)")
-    parser.add_argument("--categories", nargs="*", help="Список категорій (необов'язково)")
-    parser.add_argument("--tags", nargs="*", help="Список тегів (необов'язково)")
-    parser.add_argument("--amount", default="10-1000",
+    parser.add_argument("categories", nargs="*", help="Список категорій (необов'язково)")
+    parser.add_argument("tags", nargs="*", help="Список тегів (необов'язково)")
+    parser.add_argument("amount", default="10-1000",
                         help="Діапазон суми (формат: М-N, наприклад 10-1000)")
-    parser.add_argument("--output", default="data.json", help="Файл для збереження даних")
+    parser.add_argument("output", default="data.json", help="Файл для збереження даних")
     args = parser.parse_args()
 
     # Парсимо діапазони (розбиваємо рядок "0-3" на [0, 3])
