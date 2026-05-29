@@ -35,7 +35,7 @@ def show_pie_chart(data):
         print("Бібліотека matplotlib не встановлена.")
         print("Встановіть її командою: pip install matplotlib")
         return
-
+pip install matplotlib
     from commands import choose_from_list
 
     period = choose_from_list(
