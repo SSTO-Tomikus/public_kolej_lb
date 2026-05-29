@@ -23,9 +23,9 @@ def load_config():
 
     # Крок 2: Читаємо аргументи командного рядка
     parser = argparse.ArgumentParser(description="Система обліку фінансів")
-    parser.add_argument("--config", help="шлях до файлу конфігурації")
-    parser.add_argument("--data-file", help="шлях до файлу даних")
-    parser.add_argument("--page-size", type=int, help="кількість записів на сторінці")
+    parser.add_argument("config", help="шлях до файлу конфігурації")
+    parser.add_argument("data-file", help="шлях до файлу даних")
+    parser.add_argument("page-size", type=int, help="кількість записів на сторінці")
     args, _ = parser.parse_known_args()
 
     # Крок 3: Файл конфігурації (другий пріоритет)
