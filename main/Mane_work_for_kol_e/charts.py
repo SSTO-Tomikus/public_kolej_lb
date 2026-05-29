@@ -10,7 +10,7 @@ def get_transactions_for_period(transactions, period):
     for t in transactions:
         if t["trans_type"] != "expense":
             continue  # показуємо тільки витрати на діаграмі
-        t_date = datetime.strptime(t["date"], "%Y-%m-%d")
+        t_date = datetime.strptime(t["date"], "%d.%m.%Y")
 
         if period == "week":
             if 0 <= (today - t_date).days <= 7:

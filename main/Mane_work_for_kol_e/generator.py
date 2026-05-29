@@ -47,7 +47,7 @@ def generate_data(start_date, end_date, transactions_range, categories, tags, am
                 "trans_type": trans_type,
                 "amount": amount,
                 "category": category,
-                "date": current_date.strftime("%Y-%m-%d"),
+                "date": current_date.strftime("%d.%m.%Y"),
                 "tags": tag,
                 "comment": ""
             })
@@ -76,8 +76,8 @@ def main():
     trans_range = list(map(int, args.number_of_transactions.split("-")))
     amount_range = list(map(float, args.amount.split("-")))
 
-    start = datetime.strptime(args.start_date, "%Y-%m-%d")
-    end = datetime.strptime(args.end_date, "%Y-%m-%d")
+    start = datetime.strptime(args.start_date, "%d.%m.%Y")
+    end = datetime.strptime(args.end_date, "%d.%m.%Y")
 
     transactions = generate_data(
         start_date=start,

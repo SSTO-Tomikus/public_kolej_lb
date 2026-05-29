@@ -8,7 +8,7 @@ from storage import (save_data, get_all_categories,
 
 def get_current_date():
     # Повертає сьогоднішню дату у форматі "2024-01-25"
-    return datetime.now().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%d.%m.%Y")
 
 
 def choose_from_list(items, prompt):
@@ -38,20 +38,6 @@ def input_amount():
         except ValueError:
             # ValueError виникає коли float() не може перетворити рядок
             print("Введіть числове значення")
-
-
-# def input_date():  # старий варіант
-#     # Просить ввести дату або залишити поточну
-#     date_input = input(f"Дата (РРРР-ММ-ДД, Enter = сьогодні {get_current_date()}): ").strip()
-#     if not date_input:
-#         return get_current_date()
-#     try:
-#         # Перевіряємо що дата введена правильно
-#         datetime.strptime(date_input, "%Y-%m-%d")
-#         return date_input
-#     except ValueError:
-#         print(f"Невірний формат, використовую сьогоднішню дату")
-#         return get_current_date()
     
 def input_date():
     while True:
@@ -61,10 +47,10 @@ def input_date():
             return get_current_date()
 
         try:
-            datetime.strptime(date_input, "%Y-%m-%d")  # strptime — перевіряє що рядок відповідає формату
+            datetime.strptime(date_input, "%d.%m.%Y")  # strptime — перевіряє що рядок відповідає формату
             return date_input
         except ValueError:
-            print("Невірний формат! Спробуй ще раз (РРРР-ММ-ДД)")
+            print("Невірний формат! Спробуй ще раз (ДД.ММ.РРРР)")
             continue
 
 
@@ -164,7 +150,7 @@ def filter_by_period(transactions, period):
 
     for t in transactions:
         # Перетворюємо рядок дати в об'єкт datetime для порівняння
-        t_date = datetime.strptime(t["date"], "%Y-%m-%d")
+        t_date = datetime.strptime(t["date"], "%d.%m.%Y")
 
         if period == "week":
             # Останні 7 днів
@@ -230,8 +216,8 @@ def display_transactions(data, config):
 
             # Пагінація — зупиняємось після page_size записів
             if count % page_size == 0:
-                more = input("\nПоказати більше? (Enter = так, n = ні): ").strip()
-                if more.lower() == "n":
+                more = input("\nПоказати більше? (Enter = так, n = ні): ").strip().lower()
+                if more == "n":
                     return
 
 
@@ -337,10 +323,10 @@ def edit_transaction(data, filename):
 
     # Редагування дати
     print(f"Поточна дата: {t['date']}")
-    new_date = input("Нова дата (РРРР-ММ-ДД або Enter): ").strip()
+    new_date = input("Нова дата (ДД.ММ.РРРР або Enter): ").strip()
     if new_date:
         try:
-            datetime.strptime(new_date, "%Y-%m-%d")
+            datetime.strptime(new_date, "%d.%m.%Y")
             t["date"] = new_date
         except ValueError:
             print("Невірний формат дати, залишаю попередню")
@@ -382,7 +368,6 @@ def search_by_tag(data):
 
     # Шукаємо всі транзакції де є цей тег
     results = [t for t in data["transactions"] if tag in t.get("tags", [])]
-    # Це list comprehension — скорочений спосіб написати цикл for з умовою if
 
     if not results:
         print(f"Транзакцій з тегом '{tag}' не знайдено")

@@ -25,6 +25,7 @@ def main():
         print("=" * 40)
         show_balance(data)
         print("=" * 40)
+
         action = choose_from_list([
             "Додати витрату",
             "Додати дохід",

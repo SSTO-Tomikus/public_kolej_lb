@@ -36,7 +36,7 @@ class Transaction:
             "comment": self.comment
         }
 
-    @staticmethod
+    @staticmethod #метод не потребує self 
     def from_dict(data):
         # Створює об'єкт Transaction зі словника (при завантаженні з JSON)
         return Transaction(
