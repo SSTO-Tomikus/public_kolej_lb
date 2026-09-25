@@ -6,8 +6,10 @@ const int variant_number = 23;
 int group_number = 79;
 const float PI = 3.14;
 double suma = variant_number + PI;
-
 int suma_conv = variant_number + PI;
+
+const int NAME_NUMBER = 6;
+
 int main() {
     printf("My jornal nomber %d. His Cos = %f\n", variant_number, cos(variant_number));
     char name[] = "Sergii";
